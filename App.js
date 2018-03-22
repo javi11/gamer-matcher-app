@@ -11,6 +11,9 @@ import {
   Text,
   View
 } from 'react-native';
+import {
+  Button
+} from 'react-native-elements';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -30,6 +33,10 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
+        <Button
+          raised
+          icon={{name: 'cached'}}
+          title='TEST NATIVE ELEMENTS' />
         <Text style={styles.instructions}>
           {instructions}
         </Text>
