@@ -12,6 +12,7 @@ A react native app for gamers ;)
 
 - Node > 8
 - Android SDK or XCode
+- Install expo app on your mobile phone
 
 #### Installation:
 
@@ -30,6 +31,9 @@ To execute, connect your mobile phone or run your emulator and execute:
 ```
 yarn run start
 ```
+
+Enter to the given url into your mobile phone
+
 
 ### Tecnologies
 
