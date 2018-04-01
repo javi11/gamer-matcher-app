@@ -1,4 +1,7 @@
 {
   "name": "gamerMatcherApp",
-  "displayName": "gamerMatcherApp"
+  "displayName": "gamerMatcherApp",
+  "expo": {
+    "sdkVersion": "24.0.0"
+  }
 }
