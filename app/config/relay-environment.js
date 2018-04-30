@@ -8,7 +8,7 @@ import { API_URL } from './settings';
 installRelayDevTools();
 
 async function fetchQuery(operation, variables) {
-  const token = Expo.SecureStore.getItemAsync(USER_AUTH_TOKEN);
+  const token = await Expo.SecureStore.getItemAsync(USER_AUTH_TOKEN);
   return fetch(`${API_URL}/graphql`, {
     method: 'POST',
     headers: {

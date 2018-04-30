@@ -11,7 +11,6 @@
     "ios": "react-native-scripts ios",
     "test": "yarn jest && eslint .",
     "jest": "node node_modules/jest/bin/jest.js",
-    "precommit": "yarn test",
     "eslint": "eslint .",
     "postinstall": "rndebugger-open --expo"
   },

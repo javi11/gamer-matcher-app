@@ -1,5 +1,5 @@
 /* global fetch */
-import { AsyncStorage } from 'react-native';
+import Expo from 'expo';
 import settings from '../../config/settings';
 import { SESSION_KEY } from '../../config/constants';
 
@@ -18,7 +18,7 @@ async function login(email, password) {
     throw body;
   }
 
-  await AsyncStorage.setItem(SESSION_KEY, JSON.stringify(body));
+  await Expo.SecureStore.setItemAsync(SESSION_KEY, JSON.stringify(body));
 
   return body;
 }
