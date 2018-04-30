@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Keyboard } from 'react-native';
 import deviceLog from 'react-native-device-log';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import {
@@ -58,6 +58,7 @@ class Login extends Component {
   };
 
   handleSubmit = async () => {
+    Keyboard.dismiss();
     const { email, password } = this.state;
     this.setState({ loading: true });
 
@@ -98,7 +99,7 @@ class Login extends Component {
               <Label>Password</Label>
               <Input
                 name="password"
-                secureTextEntryç
+                secureTextEntry
                 onChangeText={password => this.setState({ password })}
                 value={this.state.password}
               />
