@@ -64,6 +64,11 @@ class Login extends Component {
     try {
       await login(email, password);
       this.setState({ loading: false });
+      Toast.show({
+        text: 'Login okey!!!',
+        buttonText: 'Okay',
+        type: 'success'
+      });
     } catch (e) {
       deviceLog.debug(e);
       this.setState({ loading: false });
