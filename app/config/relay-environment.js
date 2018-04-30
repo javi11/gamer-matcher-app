@@ -13,12 +13,12 @@ async function fetchQuery(operation, variables) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({
       query: operation.text,
-      variables,
-    }),
+      variables
+    })
   }).then(response => response.json());
 }
 
@@ -29,7 +29,7 @@ const store = new Store(source);
 
 const env = new Environment({
   network,
-  store,
+  store
 });
 
 export default env;

@@ -5,12 +5,12 @@ import { resetRouterTo } from './utils';
 const createRootNavigator = initialRouteName =>
   StackNavigator(
     {
-      Auth: { screen: AuthNavigator },
+      Auth: { screen: AuthNavigator }
     },
     {
       initialRouteName,
-      headerMode: 'none',
-    },
+      headerMode: 'none'
+    }
   );
 
 export const resetRootStack = routeName => resetRouterTo(true, routeName);

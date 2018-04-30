@@ -4,11 +4,11 @@ import { resetRouterTo } from './utils';
 
 const AuthNavigator = StackNavigator(
   {
-    Login: { screen: LoginPage },
+    Login: { screen: LoginPage }
   },
   {
-    initialRouteName: 'Login',
-  },
+    initialRouteName: 'Login'
+  }
 );
 
 export const resetAuthStack = routeName => resetRouterTo(false, routeName);
