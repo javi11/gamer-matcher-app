@@ -4,14 +4,12 @@ import React, { Component } from 'react';
 import deviceLog from 'react-native-device-log';
 import createRootNavigator from './app/navigators/root-navigator';
 import logger from './logger';
+import { isLoggedIn } from './app/services/oauth';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isReady: false
-    };
-  }
+  state = {
+    isReady: false
+  };
 
   async componentWillMount() {
     await logger;
@@ -21,14 +19,18 @@ class App extends Component {
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'), // eslint-disable-line global-require
       Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf') // eslint-disable-line global-require
     });
-    this.setState({ isReady: true });
+
+    this.setState({ isLogged: await isLoggedIn(), isReady: true });
   }
 
   render() {
-    const RootComponent = createRootNavigator('Auth');
+    const { isLogged } = this.state;
+    const initialRoute = isLogged ? 'Home' : 'Auth';
+    const RootComponent = createRootNavigator(initialRoute);
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
+
     return (
       <Root>
         <RootComponent />

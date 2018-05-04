@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Image, Keyboard } from 'react-native';
 import deviceLog from 'react-native-device-log';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -15,7 +16,7 @@ import {
   Spinner
 } from 'native-base';
 import LoginLogo from '../../assets/img/login.png';
-import { login } from '../../services/oauth';
+import { onSignIn } from '../../services/oauth';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,17 +60,14 @@ class Login extends Component {
 
   handleSubmit = async () => {
     Keyboard.dismiss();
+    const { navigate } = this.props.navigation;
     const { email, password } = this.state;
     this.setState({ loading: true });
 
     try {
-      await login(email, password);
+      await onSignIn(email, password);
       this.setState({ loading: false });
-      Toast.show({
-        text: 'Login okey!!!',
-        buttonText: 'Okay',
-        type: 'success'
-      });
+      navigate('Home');
     } catch (e) {
       deviceLog.debug(e);
       this.setState({ loading: false });
@@ -116,7 +114,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  // validate props
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default Login;

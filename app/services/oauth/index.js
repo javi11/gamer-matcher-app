@@ -1,9 +1,26 @@
 /* global fetch */
 import Expo from 'expo';
+import jwtDecode from 'jwt-decode';
 import settings from '../../config/settings';
 import { SESSION_KEY } from '../../config/constants';
 
-async function login(email, password) {
+function onSignOut() {
+  return Expo.SecureStore.removeItemAsync(SESSION_KEY);
+}
+
+async function isLoggedIn() {
+  let isLogged = false;
+  const session = await Expo.SecureStore.getItemAsync(SESSION_KEY);
+  if (session && session.expires_in && session.access_token) {
+    const now = Date.now();
+    const { exp } = jwtDecode.decode(session.access_token);
+    isLogged = now < exp;
+  }
+
+  return isLogged;
+}
+
+async function onSignIn(email, password) {
   const response = await fetch(`${settings.API_URL}/oauth2/token`, {
     method: 'POST',
     headers: {
@@ -23,4 +40,4 @@ async function login(email, password) {
   return body;
 }
 
-export { login };
+export { onSignIn, isLoggedIn, onSignOut };
