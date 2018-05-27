@@ -1,12 +1,17 @@
 {
   "presets": [
-    "babel-preset-expo",
-    "react-native"
+    "babel-preset-expo"
   ],
   "env": {
     "development": {
       "plugins": [
-        "transform-react-jsx-source"
+        "transform-react-jsx-source",
+        [
+          "relay",
+          {
+            "schema": "data/schema.json"
+          }
+        ]
       ]
     }
   }

@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 import AuthNavigator from './auth-navigator';
-import HomePage from '../screens/home';
+import HomePage from '../screens/home/Home';
 import { resetRouterTo } from './utils';
 
 const createRootNavigator = initialRouteName =>

@@ -2,18 +2,20 @@
 import { installRelayDevTools } from 'relay-devtools';
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 import Expo from 'expo';
-import { USER_AUTH_TOKEN } from './constants';
-import { API_URL } from './settings';
+import { SESSION_KEY } from './constants';
+import settings from './settings';
 
 installRelayDevTools();
 
 async function fetchQuery(operation, variables) {
-  const token = await Expo.SecureStore.getItemAsync(USER_AUTH_TOKEN);
-  return fetch(`${API_URL}/graphql`, {
+  const { access_token: accessToken } = JSON.parse(await Expo.SecureStore.getItemAsync(SESSION_KEY));
+
+  return fetch(`${settings.API_URL}/graphql`, {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${accessToken}`
     },
     body: JSON.stringify({
       query: operation.text,

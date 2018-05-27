@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import LoginPage from '../screens/login';
+import LoginPage from '../screens/auth/Login';
 import { resetRouterTo } from './utils';
 
 const AuthNavigator = StackNavigator(
