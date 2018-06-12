@@ -7,9 +7,9 @@ if (process.env.NODE_ENV === 'production') {
   apiUrl = ''; // your production server url
 }
 
-export const settings = {
+const settings = {
   env: process.env.NODE_ENV,
-  API_URL: apiUrl,
+  API_URL: apiUrl
 };
 
 export default settings;
